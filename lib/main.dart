@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 
+import 'pages/home_page.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -80,14 +82,5 @@ class _MainTabBarPageState extends State<MainTabBarPage> {
               ),
               label: "User"),
         ]);
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }
