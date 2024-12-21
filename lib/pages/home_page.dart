@@ -16,46 +16,64 @@ class HomePage extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.grey[300],
               borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20)
-              ),
+                  topLeft: Radius.circular(20), topRight: Radius.circular(20)),
             ),
-            child:  Padding(padding: EdgeInsets.all(15),
+            child: Padding(
+              padding: const EdgeInsets.all(15),
               child: Column(
                 children: [
-                  TextField(
-                    style: const TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold
-                    ),
-                    decoration: InputDecoration(
-                      filled: true,
-                      border: OutlineInputBorder(
-                        borderSide:  const BorderSide(
-                          width: 0,
-                          style: BorderStyle.none
-                        ),
-                        borderRadius: BorderRadius.circular(10)
-                      ),
-                      fillColor: Colors.black,
-                      suffixIcon: Container(
-                        padding: const EdgeInsets.all(10),
-                        margin: const EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                          color: Colors.grey, borderRadius: BorderRadius.circular(10)
-                        ),
-                        child: const Icon(IconlyLight.search, color: Colors.white,),
-                      ),
-                      contentPadding: const EdgeInsets.all(15),
-                      hintText: "Search Courses",
-                      hintStyle: const TextStyle(color: Colors.grey, fontWeight: FontWeight.bold)
-                    ),
-                  )
+                  searchBox(),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  headerTextField('Categories'),
                 ],
               ),
             ),
           )
         ],
       ),
+    );
+  }
+
+  Row headerTextField(String title) {
+    return Row(
+      children: [
+        Text(
+          title,
+          style: const TextStyle(
+              fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black),
+        ),
+        const SizedBox(
+          width: 6,
+        ),
+      ],
+    );
+  }
+
+  TextField searchBox() {
+    return TextField(
+      style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+      decoration: InputDecoration(
+          filled: true,
+          border: OutlineInputBorder(
+              borderSide: const BorderSide(width: 0, style: BorderStyle.none),
+              borderRadius: BorderRadius.circular(10)),
+          fillColor: Colors.black,
+          suffixIcon: Container(
+            padding: const EdgeInsets.all(10),
+            margin: const EdgeInsets.all(5),
+            decoration: BoxDecoration(
+                color: Colors.grey, borderRadius: BorderRadius.circular(10)),
+            child: const Icon(
+              IconlyLight.search,
+              color: Colors.white,
+            ),
+          ),
+          contentPadding: const EdgeInsets.all(15),
+          hintText: "Search Courses",
+          hintStyle:
+              const TextStyle(color: Colors.grey, fontWeight: FontWeight.bold)),
     );
   }
 
