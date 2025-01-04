@@ -1,33 +1,35 @@
-
-
 class Course {
-  final String id;
-  final String imageUrl;
-  final String rating;
-  final bool isBookmarked;
-  final String courseTitle;
-  final String instructor;
-  final String price;
-  final String duration;
-  final String sectionsLength;
-  final List sectionLaps;
-  String description;
-  String courseTag;
+  final int id;
+  final String courseName;
+  final String courseDescribe;
+  final String? category;
+  final DateTime createdAt;
 
-  Course(
-      {required this.id,
-        required this.imageUrl,
-        required this.rating,
-        required this.isBookmarked,
-        required this.courseTitle,
-        required this.instructor,
-        required this.price,
-        required this.duration,
-        required this.sectionsLength,
-        required this.sectionLaps,
-        this.description = _description,
-        required this.courseTag});
+  Course({
+    required this.id,
+    required this.courseName,
+    required this.courseDescribe,
+    this.category,
+    required this.createdAt,
+  });
+
+  factory Course.fromJson(Map<String, dynamic> json) {
+    return Course(
+      id: json['id'],
+      courseName: json['course_name'],
+      courseDescribe: json['course_describe'],
+      category: json['category'],
+      createdAt: DateTime.parse(json['created_at']),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'course_name': courseName,
+      'course_describe': courseDescribe,
+      'category': category,
+      'created_at': createdAt.toIso8601String(),
+    };
+  }
 }
-
-const _description =
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo';

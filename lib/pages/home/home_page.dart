@@ -1,7 +1,18 @@
+import 'package:app/data/category_data.dart';
+import 'package:app/pages/home/widget/all_courses/all_courses_widget.dart';
+import 'package:app/pages/home/widget/new_courses/new_courses_widget.dart';
+import 'package:app/widgets/category_icon.dart';
+
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 
+import '../../widgets/header_text_field.dart';
+import '../../widgets/tag.dart';
+import '../category/category_page.dart';
+
 class HomePage extends StatelessWidget {
+  static const routeName = '/home';
+
   const HomePage({super.key});
 
   @override
@@ -26,7 +37,27 @@ class HomePage extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  headerTextField('Categories'),
+                  HeaderTextField(title: 'Category'),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  categorySlider(),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  HeaderTextField(
+                    title: 'All courses for you',
+                    child: Tag(title: "Let's go!"),
+                  ),
+                  const AllCoursesWidget(),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  HeaderTextField(
+                    title: 'New courses',
+                    child: Tag(title: "new"),
+                  ),
+                  const NewCoursesWidget(),
                 ],
               ),
             ),
@@ -36,18 +67,26 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Row headerTextField(String title) {
-    return Row(
-      children: [
-        Text(
-          title,
-          style: const TextStyle(
-              fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black),
-        ),
-        const SizedBox(
-          width: 6,
-        ),
-      ],
+  Container categorySlider() {
+    return Container(
+      height: 100,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: categoryData.length,
+        itemBuilder: (BuildContext context, int index) {
+          return GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CategoryPage(
+                        category: categoryData[index].categoryTitle),
+                  ),
+                );
+              },
+              child: CategoryIcon(category: categoryData[index]));
+        },
+      ),
     );
   }
 
@@ -92,14 +131,14 @@ class HomePage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Hello user,",
+                          "Hello",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
                               fontSize: 22),
                         ),
                         Text(
-                          "Learn something new everyday",
+                          "Learn something new everyday with Moon",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.grey,
