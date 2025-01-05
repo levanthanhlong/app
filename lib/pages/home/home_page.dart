@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 
 import '../../widgets/header_text_field.dart';
+import '../../widgets/search_box.dart';
 import '../../widgets/tag.dart';
 import '../category/category_page.dart';
 
@@ -33,7 +34,7 @@ class HomePage extends StatelessWidget {
               padding: const EdgeInsets.all(15),
               child: Column(
                 children: [
-                  searchBox(),
+                  SearchBox(),
                   const SizedBox(
                     height: 10,
                   ),
@@ -87,32 +88,6 @@ class HomePage extends StatelessWidget {
               child: CategoryIcon(category: categoryData[index]));
         },
       ),
-    );
-  }
-
-  TextField searchBox() {
-    return TextField(
-      style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-      decoration: InputDecoration(
-          filled: true,
-          border: OutlineInputBorder(
-              borderSide: const BorderSide(width: 0, style: BorderStyle.none),
-              borderRadius: BorderRadius.circular(10)),
-          fillColor: Colors.black,
-          suffixIcon: Container(
-            padding: const EdgeInsets.all(10),
-            margin: const EdgeInsets.all(5),
-            decoration: BoxDecoration(
-                color: Colors.grey, borderRadius: BorderRadius.circular(10)),
-            child: const Icon(
-              IconlyLight.search,
-              color: Colors.white,
-            ),
-          ),
-          contentPadding: const EdgeInsets.all(15),
-          hintText: "Search Courses",
-          hintStyle:
-              const TextStyle(color: Colors.grey, fontWeight: FontWeight.bold)),
     );
   }
 

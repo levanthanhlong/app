@@ -205,15 +205,26 @@ class ApiService {
   }
 
   // Get user info
-  Future<Map<String, dynamic>> getUserInfo (String token) async {
-    try{
-      final response = await _dio.get('$baseUrl/user/getUserInfo',
-      data: {
-        "token": token
-      });
+  Future<Map<String, dynamic>> getUserInfo(String token) async {
+    try {
+      final response =
+          await _dio.get('$baseUrl/user/getUserInfo', data: {"token": token});
       Map<String, dynamic> data = response.data;
       return data;
-    } on DioException catch (e){
+    } on DioException catch (e) {
+      print("error: ${e.message}");
+      return {"status": 0, "message": "connect error"};
+    }
+  }
+
+  // search course
+  Future<Map<String, dynamic>> getSearchCourses(String text) async {
+    try {
+      final response = await _dio
+          .get('$baseUrl/course/getSearchCourses', data: {"text": text});
+      Map<String, dynamic> data = response.data;
+      return data;
+    } on DioException catch (e) {
       print("error: ${e.message}");
       return {"status": 0, "message": "connect error"};
     }

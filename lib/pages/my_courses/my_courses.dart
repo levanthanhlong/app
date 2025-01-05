@@ -5,7 +5,7 @@ import 'bloc/get_all_courses_bloc.dart';
 
 class MyCourses extends StatelessWidget {
   static const routeName = 'myCourses';
-  const MyCourses({Key? key}) : super(key: key);
+  const MyCourses({super.key});
 
 
   @override

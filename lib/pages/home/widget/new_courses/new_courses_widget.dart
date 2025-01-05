@@ -121,7 +121,7 @@ class CourseTile extends StatelessWidget {
             Expanded(
               child: Text(
                 courseName,
-                style: const TextStyle(fontSize: 16),
+                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.lightBlue),
               ),
             ),
             const SizedBox(

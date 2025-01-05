@@ -7,6 +7,7 @@ import 'package:app/pages/my_courses/my_courses.dart';
 import 'package:app/pages/play/play.dart';
 import 'package:app/pages/question/bloc/question_bloc.dart';
 import 'package:app/pages/question/question_page.dart';
+import 'package:app/pages/search/search_page.dart';
 import 'package:app/pages/user/user_page.dart';
 import 'package:app/utls/use_token.dart';
 import 'package:flutter/material.dart';
@@ -55,6 +56,7 @@ class MyApp extends StatelessWidget {
         MyCourses.routeName: (context) => const MyCourses(),
         PlayPage.routeName: (context) => const PlayPage(),
         HelpSupportPage.routeName: (context) => const HelpSupportPage(),
+        //SearchPage.routeName: (context) => const SearchPage(),
       },
     );
   }
